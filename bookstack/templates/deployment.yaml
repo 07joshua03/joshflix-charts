@@ -55,7 +55,7 @@ spec:
               port: http
           env:
           - name: DB_HOST
-            value: mariadb
+            value: bookstack-mariadb
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
