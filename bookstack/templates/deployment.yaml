@@ -55,11 +55,11 @@ spec:
               port: http
           env:
           - name: PUID
-            value: 1000
+            value: "1000"
           - name: APP_URL
-            value: https://wiki.joshflix.nl
+            value: "https://wiki.joshflix.nl"
           - name: PGID
-            value: 1000
+            value: "1000"
           - name: DB_HOST
             value: bookstack-mariadb
           - name: DB_DATABASE
@@ -67,7 +67,7 @@ spec:
               secretKeyRef:
                 name: bookstack-mariadb-secret
                 key: database
-          - name: DB_USERNAME
+          - name: DB_USER
             valueFrom:
               secretKeyRef:
                 name: bookstack-mariadb-secret
