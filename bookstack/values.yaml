@@ -46,14 +46,14 @@ ingress:
     cert-manager.io/issuer: "letsencrypt-staging"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
   hosts:
-    - host: bookstack.joshflix.nl
+    - host: wiki.joshflix.nl
       paths:
         - path: "/"
           pathType: Prefix
   tls:
   - hosts:
-      - bookstack.joshflix.nl
-    secretName: cert-bookstack-joshflix-nl-tls
+      - wiki.joshflix.nl
+    secretName: cert-wiki-joshflix-nl-tls
 
 mariadb:
   enabled: true
