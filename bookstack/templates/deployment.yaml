@@ -5,13 +5,7 @@ metadata:
   labels:
     {{- include "bookstack.labels" . | nindent 4 }}
 spec:
-  volumes:
-  - name: bookstack-uploads
-    persistentVolumeClaim:
-      claimName: bookstack-uploads
-  - name: bookstack-storage
-    persistentVolumeClaim:
-      claimName: bookstack-storage
+  
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -27,6 +21,13 @@ spec:
       labels:
         {{- include "bookstack.selectorLabels" . | nindent 8 }}
     spec:
+      volumes:
+      - name: uploads
+        persistentVolumeClaim:
+          claimName: bookstack-uploads
+      - name: storage
+        persistentVolumeClaim:
+          claimName: bookstack-storage
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -58,9 +59,9 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-          - name: bookstack-uploads
+          - name: uploads
             mountPath: /var/www/bookstack/public/uploads
-          - name: bookstack-storage
+          - name: storage
             mountPath: /var/www/bookstack/storage/uploads
       {{- with .Values.nodeSelector }}
       nodeSelector:
