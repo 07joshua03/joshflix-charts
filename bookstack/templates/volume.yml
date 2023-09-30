@@ -8,6 +8,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  volumeBindingMode: Immediate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
