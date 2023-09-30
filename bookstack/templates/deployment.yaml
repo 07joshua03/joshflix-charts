@@ -60,6 +60,10 @@ spec:
             value: "true"
           - name: OIDC_NAME
             value: "JoshFlix Auth"
+          - name: OIDC_USER_TO_GROUPS
+            value: "true"
+          - name: OIDC_GROUPS_CLAIN
+            value: groups
           - name: OIDC_CLIENT_ID
             valueFrom:
               secretKeyRef:
