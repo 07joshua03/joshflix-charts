@@ -5,6 +5,13 @@ metadata:
   labels:
     {{- include "bookstack.labels" . | nindent 4 }}
 spec:
+  volumes:
+  - name: bookstack-uploads
+    persistentVolumeClaim:
+      claimName: bookstack-uploads
+  - name: bookstack-storage
+    persistentVolumeClaim:
+      claimName: bookstack-storage
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
@@ -67,10 +74,3 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-  volumes:
-  - name: bookstack-uploads
-    persistentVolumeClaim:
-      claimName: bookstack-uploads
-  - name: bookstack-storage
-    persistentVolumeClaim:
-      claimName: bookstack-storage
