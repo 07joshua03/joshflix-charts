@@ -71,7 +71,7 @@ spec:
                 name: authentik-wiki-oidc
                 key: secret
           - name: OIDC_ISSUER
-            value: "https://auth.joshflix.nl"
+            value: "https://auth.joshflix.nl/application/o/wiki/"
           - name: OIDC_ISSUER_DISCOVER
             value: "true"
           - name: PUID
