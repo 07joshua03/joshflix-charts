@@ -54,6 +54,26 @@ spec:
               path: /
               port: http
           env:
+          - name: AUTH_METHOD
+            value: oidc
+          - name: AUTH_AUTO_INSTIANTIATE
+            value: "true"
+          - name: OIDC_NAME
+            value: "JoshFlix Auth"
+          - name: OIDC_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: authentik-wiki-oidc
+                key: id
+          - name: OIDC_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: authentik-wiki-oidc
+                key: secret
+          - name: OIDC_ISSUER
+            value: "https://auth.joshflix.nl"
+          - name: OIDC_ISSUER_DISCOVER
+            value: "true"
           - name: PUID
             value: "1000"
           - name: APP_URL
