@@ -56,6 +56,22 @@ spec:
           env:
           - name: DB_HOST
             value: bookstack-mariadb
+          - name: DB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-mariadb-secret
+                key: database
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-mariadb-secret
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: bookstack-mariadb-secret
+                key: password
+            
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
