@@ -15,7 +15,7 @@ ingress:
   annotations:
     cert-manager.io/issuer: "letsencrypt-staging"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure,web
-    traefik.ingress.kubernetes.io/router.middlewares: redirect-scheme@kubernetescrd
+    #traefik.ingress.kubernetes.io/router.middlewares: redirect-scheme@kubernetescrd
   hosts:
     - host: media.joshflix.nl
       paths:
