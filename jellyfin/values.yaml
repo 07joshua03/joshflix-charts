@@ -8,6 +8,7 @@ persistence:
 service:
   type: ClusterIP
   port: 80
+  containerPort: 8096
 
 ingress:
   enabled: true
