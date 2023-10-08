@@ -47,17 +47,17 @@ spec:
               containerPort: {{ .Values.service.healthPort }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
-              port: 9999
+            exec:
+              command:
+              - ./gluegun-entrypoint healthcheck
             initialDelaySeconds: 60
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
           readinessProbe:
-            httpGet:
-              path: /
-              port: 9999
+            exec:
+              command:
+              - ./gluegun-entrypoint healthcheck
             initialDelaySeconds: 60
             periodSeconds: 30
             successThreshold: 1
