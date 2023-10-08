@@ -12,7 +12,7 @@ image:
 
 env:
   - name: HEALTH_SERVER_ADDRESS
-    value: gluegun:9999
+    value: "gluegun:9999"
   # VPN_SERVICE_PROVIDER: ""
   # OPENVPN_USER: ""
   # OPENVPN_PASSWORD: ""
