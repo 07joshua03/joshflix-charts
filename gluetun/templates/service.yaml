@@ -4,13 +4,13 @@ metadata:
   name: { { include "gluetun.fullname" . } }
   labels: { { - include "gluetun.labels" . | nindent 4 } }
 spec:
-  type: { { .Values.service.type } }
+  type: ClusterIP
   ports:
-    - port: { { .Values.service.proxyPort } }
+    - port: 8888
       targetPort: proxy
       protocol: TCP
       name: proxy
-    - port: { { .Values.service.healthPort } }
+    - port: 9999
       targetPort: health
       protocol: TCP
       name: health
