@@ -10,7 +10,9 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v3.35.0"
 
-env: []
+env:
+  - name: HEALTH_SERVER_ADDRESS
+    value: gluegun:9999
   # VPN_SERVICE_PROVIDER: ""
   # OPENVPN_USER: ""
   # OPENVPN_PASSWORD: ""
