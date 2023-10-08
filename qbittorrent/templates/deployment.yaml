@@ -25,6 +25,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: qbittorrent-data
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-internal
       {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -56,7 +59,9 @@ spec:
           {{- if .Values.persistence.enabled }}
           volumeMounts:
             - name: data
-              mountPath: /config 
+              mountPath: /config
+            - name: media
+              mountPath: /media 
           {{- end }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
