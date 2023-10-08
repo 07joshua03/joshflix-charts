@@ -49,16 +49,16 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: health
-            initialDelaySeconds: 15
+              port: 9999
+            initialDelaySeconds: 60
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /
-              port: health
-            initialDelaySeconds: 15
+              port: 9999
+            initialDelaySeconds: 60
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 5
