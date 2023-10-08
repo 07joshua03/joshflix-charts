@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "jellyfin.fullname" . }}
   labels:
-    {{- include "jellyfin.labels" . | nindent 4 }}
+    {{ - include "jellyfin.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "jellyfin.selectorLabels" . | nindent 4 }}
+    {{ - include "jellyfin.selectorLabels" . | nindent 4 }}
