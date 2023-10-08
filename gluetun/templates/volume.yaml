@@ -1,0 +1,12 @@
+{{- if .Values.persistence.enabled}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gluetun-data
+spec:
+  persistentVolumeReclaimPolicy: Retain
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
