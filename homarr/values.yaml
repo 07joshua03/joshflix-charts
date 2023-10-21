@@ -13,6 +13,8 @@ image:
 persistence:
   enabled: true
 
+env: []
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
