@@ -50,7 +50,7 @@ ingress:
   enabled: true
   className: ""
   annotations:
-    traefik.ingress.kubernetes.io/router.middlewares: authentik-internal@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: internal-authentik@kubernetescrd
 
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
