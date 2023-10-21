@@ -25,10 +25,12 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -44,16 +46,18 @@ ingress:
   enabled: true
   annotations:
     cert-manager.io/issuer: "letsencrypt-staging"
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    # traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: external-redirectscheme@kubernetescrd
+
   hosts:
     - host: wiki.joshflix.nl
       paths:
         - path: "/"
           pathType: Prefix
   tls:
-  - hosts:
-      - wiki.joshflix.nl
-    secretName: cert-wiki-joshflix-nl-tls
+    - hosts:
+        - wiki.joshflix.nl
+      secretName: cert-wiki-joshflix-nl-tls
 
 mariadb:
   enabled: true
@@ -64,7 +68,8 @@ mariadb:
     persistence:
       enabled: true
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
