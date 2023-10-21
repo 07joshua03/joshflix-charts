@@ -20,6 +20,12 @@ spec:
       labels:
         {{- include "homarr.selectorLabels" . | nindent 8 }}
     spec:
+    {{- if .Values.persistence.enabled }}
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: homarr-config
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -47,6 +53,11 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+           {{- if .Values.persistence.enabled }}
+          volumeMounts:
+            - name: config
+              mountPath: /app/data/configs
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
